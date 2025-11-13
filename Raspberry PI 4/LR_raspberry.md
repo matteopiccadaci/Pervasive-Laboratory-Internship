@@ -1,6 +1,6 @@
 # Lightning-Rod 0.5.0 on Raspberry Pi
 The new version of **Lightning-Rod (0.5.0)'s installation procedure on Raspberry Pi requires some modification in order to make it work properly. Some of the operations are similar to the ones found for the previous version (<a href="https://opendev.org/x/iotronic-lightning-rod/src/branch/master/doc/installation/raspberry_pi_3.rst">Old version</a>): here follow the additional steps needed to make it work.
-I suggest to install everything using the sudo user, so feel free to add the *sudo* keyword before the commands if prefer.
+If you install everything using the sudo user, so feel free to add the *sudo* keyword before the commands (keep in mind that the Lighting Rod process, and as a consequence the scripts, will be run be the root user).
 
 
 ## Prerequisites and Installation
@@ -8,7 +8,7 @@ I suggest to install everything using the sudo user, so feel free to add the *su
 apt install python3 python3-setuptools python3-pip gdb lsof libssl-dev libffi-dev
 ```
 ```
-sudo pip3 install pyasyncore
+pip3 install pyasyncore
 ```
 ```
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -29,9 +29,21 @@ sed -i "s|80 default_server;|50000 default_server;|g" /etc/nginx/sites-available
 ```
 pip3 install certbot certbot-nginx
 ```
+
 ```
 pip3 install iotronic-lightningrod
 ```
+
+If Lightning-Rod is not going to be installed using the *sudo* user, it is necessary to create the folder where some necessary file file will be stored and give the right permissions:
+```
+sudo mkdir -p /var/log/iotronic    
+sudo chmod -R 777 /var/log/iotronic
+sudo mkdir -p /etc/iotronic
+sudo chmode -R 777 /etc/iotronic
+sudo mkdir -p /var/lib/iotronic
+sudo chmode -R 777 /var/lib/iotronic
+```
+Of course the 777 permission is not the most secure one, but it is the easiest way to avoid permission problems during the installation. You **must** set more restrictive permissions later.
 ```
 lr_install
 ```
