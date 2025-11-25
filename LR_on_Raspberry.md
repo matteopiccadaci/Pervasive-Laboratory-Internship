@@ -39,9 +39,9 @@ If Lightning-Rod is not going to be installed using the *sudo* user, it is neces
 sudo mkdir -p /var/log/iotronic    
 sudo chmod -R 777 /var/log/iotronic
 sudo mkdir -p /etc/iotronic
-sudo chmode -R 777 /etc/iotronic
+sudo chmod -R 777 /etc/iotronic
 sudo mkdir -p /var/lib/iotronic
-sudo chmode -R 777 /var/lib/iotronic
+sudo chmod -R 777 /var/lib/iotronic
 ```
 Of course the 777 permission is not the most secure one, but it is the easiest way to avoid permission problems during the installation. You **must** set more restrictive permissions later.
 ```
