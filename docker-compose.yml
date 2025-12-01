@@ -232,6 +232,25 @@ services:
       retries: 5
       start_period: 10s
 
+  web_ui:
+    image: python:3.11-slim
+    container_name: web_ui
+    networks:
+      - s4t 
+    ports: 
+      - "4053:4053" 
+    volumes: 
+      - ./webui.py:/app/app.py
+    working_dir: /app
+    command: >
+      sh -c '
+      echo "[INFO] Waiting 10 seconds before starting...";
+      sleep 10;
+      echo "[INFO] Starting WEB UI...";
+      pip install fastapi uvicorn autobahn[asyncio] python-multipart &&
+      python app.py
+      '
+
   rabbitmq-setup:
     image: rabbitmq:3.7-management
     depends_on:
