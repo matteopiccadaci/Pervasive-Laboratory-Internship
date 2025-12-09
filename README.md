@@ -17,3 +17,6 @@ Being able to control the *ROSbotXL* using *Stack4Things* and *Lightning Rod* re
 - *rclpy* thread, which publishes the values in the *ROS2 topic*
 
 The same discussion can be made for the *virtual joypad* version: the difference is only the structure of the published message.
+
+#### Performance
+The main challenge in this kind of application is reducing the latency the most. In order to being able to use the *Web UI* on even the lowest end devices, the key bindings are still made by the *ROSbotXL* board (mimicking the behaviour of the original *teleop* script). 
