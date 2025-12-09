@@ -20,3 +20,33 @@ The same discussion can be made for the *virtual joypad* version: the difference
 
 #### Performance
 The main challenge in this kind of application is reducing the latency the most. In order to being able to use the *Web UI* on even the lowest end devices, the key bindings are still made by the *ROSbotXL* board (mimicking the behaviour of the original *teleop* script). 
+Here follows a benchmark performed on 10000 consecutive requests on a 2.4 Ghz Wi-Fi connection:
+
+##### Request Summary
+
+| Item                 | Value  |
+|----------------------|--------|
+| Total rows           | 10000  |
+| OK requests          | 10000  |
+| Requests with errors | 0      |
+
+##### HTTP Status Count
+
+| Status | Count |
+|--------|-------|
+| 200    | 10000 |
+
+##### Latency Statistics (OK Requests Only)
+
+| Metric          | Value       |
+|------------------|-------------|
+| Count            | 10000       |
+| Mean             | 41.814 ms   |
+| Std dev (pop.)   | 41.877 ms   |
+| Min              | 23.417 ms   |
+| Max              | 2206.436 ms |
+| Median (p50)     | 32.730 ms   |
+| P90              | 61.253 ms   |
+| P95              | 83.453 ms   |
+| P99              | 136.039 ms  |
+
